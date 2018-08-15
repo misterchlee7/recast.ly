@@ -1,10 +1,10 @@
 var VideoList = () => (
   <div className="video-list">
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
+    {/* <div><h5><em>videoListEntry</em> view goes here</h5></div> */}
+
+    { exampleVideoData.map((video) => {
+      return <VideoListEntry thumbnailSrc={video.snippet.thumbnails.default.url} title={video.snippet.title} description={video.snippet.description} />
+    })}
   </div>
 );
 
