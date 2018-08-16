@@ -1,23 +1,3 @@
-// var App = () => (
-  // <div>
-  //   <nav className="navbar">
-  //     <div className="col-md-6 offset-md-3">
-  //       {/* <div><h5><em>search</em> view goes here</h5></div> */}
-  //       <Search />
-  //     </div>
-  //   </nav>
-  //   <div className="row">
-  //     <div className="col-md-7">
-  //       {/* <div><h5><em>videoPlayer</em> view goes here</h5></div> */}
-  //       <VideoPlayer video={{}}/>
-  //     </div>
-  //     <div className="col-md-5">
-  //       {/* <div><h5><em>videoList</em> view goes here</h5></div> */}
-  //       <VideoList videos={[]}/>
-  //     </div>
-  //   </div>
-  // </div>
-// );
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -25,7 +5,7 @@ class App extends React.Component {
       currentVideoId: '4ZAEBxGipoA',
       currentTitle: 'React JS Tutorial for Beginners - 1 - Introduction',
       currentDescription: 'WHatever',
-      videoList: exampleVideoData
+      videoList: []
     };
 
     this.searchVideos();
@@ -37,9 +17,6 @@ class App extends React.Component {
       currentTitle: data.title,
       currentDescription: data.description
     });
-  }
-  onVideoSearched(data) {
-    // this.setState
   }
   searchVideos(searchTerm) {
     const _this = this;
@@ -63,42 +40,12 @@ class App extends React.Component {
           currentDescription: searchTerm ? _this.state.currentDescription : firstVideo.snippet.description,
           videoList: data.items
         });
-
-        console.log('i am the state', _this.state);
       },
       error: function(data) {
         console.log(data);
       }
     });
   };
-  receiveDebounce(searchTerm) {
-    // call method passed to videoList
-    sendDebounce(searchTerm);
-  }
-  sendDebounce(context, searchTerm) {
-    // do something
-    $.ajax({
-      url: 'https://www.googleapis.com/youtube/v3/search?',
-      data: {
-        q: searchTerm || 'dogs',
-        maxResults: 5,
-        part: 'snippet',
-        key: window.YOUTUBE_API_KEY
-      },
-      videoEmbeddable: true,
-      type: 'GET',
-      success: function(data) {
-        context.setState({
-          videoList: data.items
-        });
-
-        console.log('i am the videoList', context.state);
-      },
-      error: function(data) {
-        console.log(data);
-      }
-    });
-  }
   render() {
     return (
       <div>
@@ -115,7 +62,7 @@ class App extends React.Component {
           </div>
           <div className="col-md-5">
             {/* <div><h5><em>videoList</em> view goes here</h5></div> */}
-            <VideoList videoList={this.state.videoList} videoClicked={this.onVideoClicked.bind(this)} videoDebounced={this.sendDebounce.bind(this)}/>
+            <VideoList videoList={this.state.videoList} videoClicked={this.onVideoClicked.bind(this)}/>
           </div>
         </div>
       </div>

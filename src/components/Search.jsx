@@ -1,20 +1,41 @@
-var Search = ({videoSearched, receiveDebounce}) => {
-  const onButtonClick = function() {
+var Search = ({videoSearched}) => {
+  let keyStrokeCounter = 0;
+  let debounceTimeout = null;
 
-    // console.log(videoSearched);
-    // console.log($('.form-control').val())
-    // console.log('clicked')
-    videoSearched($('.form-control').val());
+  const onButtonClick = function() {
+    const searchTerm = $('.form-control').val();
+    searchTerm.length > 0 ? videoSearched($('.form-control').val()) : void 0;
   };
 
-  const onKeyStroke = function() {
-    // call method on app to pass the search term
-    receiveDebounce($('.form-control').val());
+  const onKeyStroke = function(event) {
+    if (event.key === 'Enter') {
+      onButtonClick();
+      keyStrokeCounter = 0;
+    }
+
+    if (keyStrokeCounter === 4) {
+      onButtonClick();
+      keyStrokeCounter = 0;
+    }
+
+    keyStrokeCounter += 1;
+
+    if (debounceTimeout) {
+      clearTimeout(debounceTimeout);
+
+      debounceTimeout = setTimeout(() => {
+        onButtonClick();
+      }, 1000);
+    } else {
+      debounceTimeout = setTimeout(() => {
+        onButtonClick();
+      }, 1000);
+    }
   }
 
   return (
     <div className="search-bar form-inline">
-      <input className="form-control" type="text" />
+      <input className="form-control" type="text" onKeyPress={onKeyStroke.bind(this)}/>
       <button className="btn hidden-sm-down" onClick={onButtonClick}>
         <span className="glyphicon glyphicon-search"></span>
       </button>

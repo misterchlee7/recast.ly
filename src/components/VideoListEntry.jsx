@@ -20,32 +20,6 @@ var VideoListEntry = ({video, videoClicked}) => {
     </div>
   )
 };
-//
-// class VideoListEntry extends React.Component {
-//   constructor(props) {
-//     super(props);
-//
-//     this.state = {
-//       thumbnailSrc: this.props.thumbnailSrc,
-//       title: this.props.title,
-//       description: this.props.description,
-//     };
-//   }
-//   render() {
-//     return (
-//       // key={video.id.videoId} thumbnailSrc={video.snippet.thumbnails.default.url} title={video.snippet.title} description={video.snippet.description}
-//       <div className="video-list-entry media">
-//         <div className="media-left media-middle">
-//           <img className="media-object" src={this.state.thumbnailSrc} alt="" />
-//         </div>
-//         <div className="media-body">
-//           <div className="video-list-entry-title">{this.state.title}</div>
-//           <div className="video-list-entry-detail">{this.state.description}</div>
-//         </div>
-//       </div>
-//     );
-//   }
-// }
 
 // PropTypes tell other developers what `props` a component expects
 // Warnings will be shown in the console when the defined rules are violated
