@@ -2,7 +2,7 @@
 window.fakeVideoData = [{
   etag: 'L332gQTY',
   id: {
-    videoId: '000001'
+    videoId: 'awpuf8y5FF4'
   },
   snippet: {
     title: 'Cute cat video',
@@ -16,7 +16,7 @@ window.fakeVideoData = [{
 }, {
   etag: 'SmEuSYxg',
   id: {
-    videoId: '000002'
+    videoId: '3vwoWXjB6wg'
   },
   snippet: {
     title: 'Super cute cat video',
@@ -30,7 +30,7 @@ window.fakeVideoData = [{
 }, {
   etag: 'ujBKBmLk',
   id: {
-    videoId: '000003'
+    videoId: '2JVN3rVVoYU'
   },
   snippet: {
     title: 'Hack Reactor opens extension school on Mars',
@@ -44,7 +44,7 @@ window.fakeVideoData = [{
 }, {
   etag: 'Nj7xszf8',
   id: {
-    videoId: '000004'
+    videoId: 'kMJ0Nw3WXAY'
   },
   snippet: {
     title: 'JavaScript Jamz',
@@ -58,7 +58,7 @@ window.fakeVideoData = [{
 }, {
   etag: 'I2w-7nRI',
   id: {
-    videoId: '000005'
+    videoId: 'W5IqM4RBgFk'
   },
   snippet: {
     title: 'Framework fatigue and you',

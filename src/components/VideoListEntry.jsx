@@ -1,39 +1,51 @@
-// var VideoListEntry = () => (
-//   <div className="video-list-entry media">
-//     <div className="media-left media-middle">
-//       <img className="media-object" src="https://i.ytimg.com/vi/1w8Z0UOXVaY/default.jpg" alt="" />
-//     </div>
-//     <div className="media-body">
-//       <div className="video-list-entry-title">Video Title</div>
-//       <div className="video-list-entry-detail">Video Description</div>
-//     </div>
-//   </div>
-// );
+var VideoListEntry = ({video, videoClicked}) => {
+  var onClickHandler = (event) => {
+    const data = event.target.dataset;
 
-class VideoListEntry extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      thumbnailSrc: this.props.thumbnailSrc,
-      title: this.props.title,
-      description: this.props.description,
-    };
-  }
-  render() {
-    return (
-      <div className="video-list-entry media">
-        <div className="media-left media-middle">
-          <img className="media-object" src={this.state.thumbnailSrc} alt="" />
-        </div>
-        <div className="media-body">
-          <div className="video-list-entry-title">{this.state.title}</div>
-          <div className="video-list-entry-detail">{this.state.description}</div>
-        </div>
+    videoClicked({
+      videoid: data.videoid,
+      title: data.title,
+      description: data.description
+    });
+  };
+  return (
+    <div className="video-list-entry media" data-videoid={video.id.videoId} data-title={video.snippet.title} data-description={video.snippet.description} onClick={onClickHandler}>
+      <div className="media-left media-middle">
+        <img className="media-object" data-videoid={video.id.videoId} data-title={video.snippet.title} data-description={video.snippet.description} src={video.snippet.thumbnails.default.url} alt="" />
       </div>
-    );
-  }
-}
+      <div className="media-body">
+        <div className="video-list-entry-title" data-videoid={video.id.videoId} data-title={video.snippet.title} data-description={video.snippet.description}>{video.snippet.title}</div>
+        <div className="video-list-entry-detail" data-videoid={video.id.videoId} data-title={video.snippet.title} data-description={video.snippet.description}>{video.snippet.description}</div>
+      </div>
+    </div>
+  )
+};
+//
+// class VideoListEntry extends React.Component {
+//   constructor(props) {
+//     super(props);
+//
+//     this.state = {
+//       thumbnailSrc: this.props.thumbnailSrc,
+//       title: this.props.title,
+//       description: this.props.description,
+//     };
+//   }
+//   render() {
+//     return (
+//       // key={video.id.videoId} thumbnailSrc={video.snippet.thumbnails.default.url} title={video.snippet.title} description={video.snippet.description}
+//       <div className="video-list-entry media">
+//         <div className="media-left media-middle">
+//           <img className="media-object" src={this.state.thumbnailSrc} alt="" />
+//         </div>
+//         <div className="media-body">
+//           <div className="video-list-entry-title">{this.state.title}</div>
+//           <div className="video-list-entry-detail">{this.state.description}</div>
+//         </div>
+//       </div>
+//     );
+//   }
+// }
 
 // PropTypes tell other developers what `props` a component expects
 // Warnings will be shown in the console when the defined rules are violated
